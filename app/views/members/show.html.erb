@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <h2>メンバー情報詳細</h2>
+       <table class="table table-bordered">
+		    <tbody>
+		    	<tr>
+				    <td>名前</td>
+			    	<td>(姓) <%= @member.last_name %></td>
+			    	<td>(名) <%= @member.first_name %></td>
+			    </tr>
+			    <tr>
+				    <td>フリガナ</td>
+			    	<td>(セイ) <%= @member.kana_last_name %></td>
+				    <td>(メイ) <%= @member.kana_first_name %></td>
+		    	</tr>
+			    <tr>
+				    <td>メールアドレス</td>
+				    <td><%= @member.email %></td>
+			    </tr>
+		     	<tr>
+			    	<td>写真</td>
+			    	<td><%#= @member.member_image_id %></td>
+			    </tr>
+		    </tbody>
+	     </table>
+	     <% if @member.id == current_member.id %>
+	     <p><%= link_to "メンバー情報編集", edit_member_path(@member) %></p>
+	     <% end %> 
+      
+    </div>
+  </div>
+</div>

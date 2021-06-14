@@ -10,11 +10,27 @@
   </head>
 
   <body>
+    <!-- ログインしている時 -->
     <% if member_signed_in? %>
+      <li>
+        <%= link_to "取引先一覧", customers_path %>
+      </li>
+      <li>
+        <%= link_to "取引先登録", new_customer_path %>
+      </li>
+      <li>
+        <%= link_to "マイページ", member_path(current_member.id)  %>
+      </li>
       <li>
         <%= link_to "ログアウト", destroy_member_session_path, method: :delete %>
       </li>
+
+    <!-- ログインしていない時 -->
     <% else %>
+
+    　<li>
+        <%= link_to "about", homes_about_path %>
+      </li>
       <li>
         <%= link_to "新規登録", new_member_registration_path %>
       </li>
@@ -22,7 +38,7 @@
         <%= link_to "ログイン", new_member_session_path %>
       </li>
     <% end %>
-    
+
     <%= yield %>
   </body>
 </html>

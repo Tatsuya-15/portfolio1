@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <h2>メンバー情報編集</h2>
+      <%= form_with model:@member, local:true do |f| %>
+       <table class="table table-bordered">
+        
+		    <tbody>
+		    	<tr>
+				    <td>名前</td>
+			    	<td>(姓) <%= f.text_field :last_name %></td>
+			    	<td>(名) <%= f.text_field :first_name %></td>
+			    </tr>
+			    <tr>
+				    <td>フリガナ</td>
+			    	<td>(セイ) <%= f.text_field :kana_last_name %></td>
+				    <td>(メイ) <%= f.text_field :kana_first_name %></td>
+		    	</tr>
+			    <tr>
+				    <td>メールアドレス</td>
+				    <td><%= f.text_field :email %></td>
+			    </tr>
+		     	<tr>
+			    	<td>写真</td>
+			    	<td><%#= @member.member_image_id %></td>
+			    </tr>
+			    <tr>
+			    	<td><%= f.submit "変更" %></td>
+			    </tr>
+		    </tbody>
+	     </table>
+	     <% end %> 
+	     
+      
+    </div>
+  </div>
+</div>

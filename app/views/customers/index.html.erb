@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+      <h2>取引先一覧</h2>
+      <table>
+        <tr>
+          <th>企業名</th>
+          <th>住所</th>
+          <th>電話番号</th>
+          <th>最終訪問日</th>
+          <th>担当営業</th>
+        </tr>
+        <% @customers.each do |customer| %>
+        <tr>
+          <td>
+            <%= link_to customer_path(customer.id) do %>
+            <%= customer.company %>
+            <% end %>
+          </td>
+          <td><%= customer.address %></td>
+          <td><%= customer.tel %></td>
+          <td><%= customer.last_visit_date %></td>
+          <td><%#= member.last_name %></td>
+        </tr>
+        <% end %>
+      </table>
+
+    </div>
+  </div>
+</div>
