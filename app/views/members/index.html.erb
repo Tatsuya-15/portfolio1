@@ -9,6 +9,7 @@
         </tr>
         <% @members.each do |member| %>
         <tr>
+          <td><%= attachment_image_tag @member, :member_image, fallback: "no_image.png", size:'80x80'%></td>
           <td><%= member.last_name %><%= member.first_name %></td>
           <td><%= member.email %></td>
         </tr>

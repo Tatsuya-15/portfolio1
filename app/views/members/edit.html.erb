@@ -7,6 +7,11 @@
         
 		    <tbody>
 		    	<tr>
+					<td>写真</td>
+			    	<td><%= attachment_image_tag @member, :member_image, fallback: "no_image.png", size:'100x100'%></td>
+			    	<td><%= f.attachment_field :member_image, placeholder: "プロフィール画像" %></td>
+			    </tr>
+		    	<tr>
 				    <td>名前</td>
 			    	<td>(姓) <%= f.text_field :last_name %></td>
 			    	<td>(名) <%= f.text_field :first_name %></td>
@@ -19,10 +24,6 @@
 			    <tr>
 				    <td>メールアドレス</td>
 				    <td><%= f.text_field :email %></td>
-			    </tr>
-		     	<tr>
-			    	<td>写真</td>
-			    	<td><%#= @member.member_image_id %></td>
 			    </tr>
 			    <tr>
 			    	<td><%= f.submit "変更" %></td>

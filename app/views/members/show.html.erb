@@ -1,32 +1,59 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-9">
+    	<!--メンバー情報の詳細-->
       <h2>メンバー情報詳細</h2>
        <table class="table table-bordered">
 		    <tbody>
 		    	<tr>
+		    		<td>写真</td>
 				    <td>名前</td>
-			    	<td>(姓) <%= @member.last_name %></td>
-			    	<td>(名) <%= @member.first_name %></td>
-			    </tr>
-			    <tr>
 				    <td>フリガナ</td>
-			    	<td>(セイ) <%= @member.kana_last_name %></td>
-				    <td>(メイ) <%= @member.kana_first_name %></td>
-		    	</tr>
-			    <tr>
-				    <td>メールアドレス</td>
-				    <td><%= @member.email %></td>
+			    	<td>e-mail</td>
+			    	<td></td>
 			    </tr>
-		     	<tr>
-			    	<td>写真</td>
-			    	<td><%#= @member.member_image_id %></td>
+			    <tr>
+			    	<td><%= attachment_image_tag @member, :member_image, fallback: "no_image.png", size:'100x100'%></td>
+				    <td><%= @member.last_name %><%= @member.first_name %></td>
+			    	<td><%= @member.kana_last_name %><%= @member.kana_first_name %></td>
+				    <td><%= @member.email %></td>
+				    <td>
+				      <% if @member.id == current_member.id %>
+					    <p><%= link_to "編集", edit_member_path(@member) %></p>
+					    <% end %> 
+				    </td>
 			    </tr>
 		    </tbody>
 	     </table>
-	     <% if @member.id == current_member.id %>
-	     <p><%= link_to "メンバー情報編集", edit_member_path(@member) %></p>
-	     <% end %> 
+	     
+	     
+	     <!-- ログインしている人の担当企業一覧 -->
+	     <h2>担当企業一覧</h2>
+	     
+	     <table>
+	        <tr>
+	          <th>企業名</th>
+	           <th>担当者名</th>
+	          <th>住所</th>
+	          <th>電話番号</th>
+	          <th>e-mail</th>
+	          <th>最終訪問日</th>
+	        </tr>
+	        <% @customers.each do |customer| %>
+	        <tr>
+	          <td>
+	            <%= link_to customer_path(customer.id) do %>
+	            <%= customer.company %>
+	            <% end %>
+	          </td>
+	          <td><%= customer.name %></td>
+	          <td><%= customer.address %></td>
+	          <td><%= customer.tel %></td>
+	          <td><%= customer.email %></td>
+	          <td><%= customer.last_visit_date %></td>
+	        </tr>
+	        <% end %>
+	      </table>
       
     </div>
   </div>
