@@ -20,7 +20,11 @@
           <td><%= customer.address %></td>
           <td><%= customer.tel %></td>
           <td><%= customer.last_visit_date %></td>
-          <td><%#= member.last_name %></td>
+          <td>
+            <%= link_to member_path(customer.member.id) do %>
+            <%= customer.member.last_name %><%= customer.member.first_name %>
+            <% end %>
+          </td>
         </tr>
         <% end %>
       </table>

@@ -1,17 +1,20 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-9">
-      <h2>メンバー一覧</h2>
+      <h2>営業一覧</h2>
       <table>
         <tr>
-          <th>名前</th>
-          <th>メールアドレス</th>
+          <th></th>
+          <th>name</th>
+          <th>e-mail</th>
+          <th></th>
         </tr>
         <% @members.each do |member| %>
         <tr>
           <td><%= attachment_image_tag @member, :member_image, fallback: "no_image.png", size:'80x80'%></td>
           <td><%= member.last_name %><%= member.first_name %></td>
           <td><%= member.email %></td>
+          <td><%= link_to "担当企業", member_path(member.id) %></td>
         </tr>
         <% end %>
       </table>
