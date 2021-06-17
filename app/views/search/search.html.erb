@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="col-xs-12">
+    <% if @model == "member" %>
+    <h2>Members search for '<%= @value %>'</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>e-mail</th>
+                <th></th>
+            </tr>
+        </thead>
+    <% @datas.each do |member| %>
+        <tbody>
+            <tr>
+                <th><%= attachment_image_tag(member, :profile_image, :fill, 40, 40, fallback: "no_image.png", size: '40x40') %></th>
+                <th><%= member.last_name %></th>
+                <th><%= member.email %></th>
+                <th><%= link_to "担当企業", member_path(member.id) %></th>
+            </tr>
+        </tbody>
+    <% end %>
+    <% elsif @model == "customer" %>
+    <h2>Customers search for '<%= @value %>'</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>company</th>
+                <th>address</th>
+                <th>tel</th>
+                <th>last_visit_date</th>
+                <th>担当営業</th>
+            </tr>
+        </thead>
+        <% @datas.each do |customer| %>
+        <tbody>
+            <tr>
+                <td><%= customer.company %></td>
+                <td><%= customer.address %></td>
+                <td><%= customer.address %></td>
+                <td><%= customer.tel %></td>
+                <td><%= customer.last_visit_date %></td>
+                <td>
+                    <%= link_to member_path(customer.member.id) do %>
+                    <%= customer.member.last_name %><%= customer.member.first_name %>
+                    <% end %>
+                </td>
+            </tr>
+        </tbody>
+        <% end %>
+    <% end %>
+    </table>
+  </div>
+</div>
