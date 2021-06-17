@@ -14,10 +14,10 @@
     <% @datas.each do |member| %>
         <tbody>
             <tr>
-                <th><%= attachment_image_tag(member, :profile_image, :fill, 40, 40, fallback: "no_image.png", size: '40x40') %></th>
-                <th><%= member.last_name %></th>
-                <th><%= member.email %></th>
-                <th><%= link_to "担当企業", member_path(member.id) %></th>
+                <td><%= attachment_image_tag(member, :member_image, :fill, 40, 40, fallback: "no_image.png", size: '40x40') %></td>
+                <td><%= member.last_name %></td>
+                <td><%= member.email %></td>
+                <td><%= link_to "担当企業", member_path(member.id) %></td>
             </tr>
         </tbody>
     <% end %>
