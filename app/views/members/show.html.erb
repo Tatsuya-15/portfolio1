@@ -32,27 +32,45 @@
 	     
 	     <table>
 	        <tr>
-	          <th>企業名</th>
-	           <th>担当者名</th>
-	          <th>住所</th>
-	          <th>電話番号</th>
-	          <th>e-mail</th>
-	          <th>最終訪問日</th>
+	        	<th></th>
+		        <th>企業名</th>
+		        <th>担当者名</th>
+		        <th>住所</th>
+		        <th>電話番号</th>
+		        <th>e-mail</th>
+		        <th>最終訪問日</th>
 	        </tr>
-	        <% @customers.each do |customer| %>
+	        
 	        <tr>
-	          <td>
-	            <%= link_to customer_path(customer.id) do %>
-	            <%= customer.company %>
-	            <% end %>
-	          </td>
-	          <td><%= customer.name %></td>
-	          <td><%= customer.address %></td>
-	          <td><%= customer.tel %></td>
-	          <td><%= customer.email %></td>
-	          <td><%= customer.last_visit_date %></td>
+	        	<td>
+	        		<% if @member.favorited_by?(current_member) %>
+					    <p>
+					      <%= link_to member_favorites_path(@member), method: :delete do %>
+					        ★
+					      <% end %>
+					    </p>
+					    <% else %>
+					    <p>
+					      <%= link_to member_favorites_path(@member), method: :post do %>
+					        ☆
+					      <% end %>
+					    </p>
+					 <% end %>
+	        	</td>
+		        <% @customers.each do |customer| %>
+		        <td>
+		          <%= link_to customer_path(customer.id) do %>
+		          <%= customer.company %>
+		          <% end %>
+		        </td>
+		        <td><%= customer.name %></td>
+		        <td><%= customer.address %></td>
+		        <td><%= customer.tel %></td>
+		        <td><%= customer.email %></td>
+		        <td><%= customer.last_visit_date %></td>
+		        <% end %>
 	        </tr>
-	        <% end %>
+	        
 	      </table>
       
     </div>

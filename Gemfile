@@ -78,7 +78,11 @@ gem "refile-mini_magick"
 gem 'rubocop', require:false
 gem 'rubocop-rails', require:false
 
-gem 'dotenv-rails'
+gem 'dotenv-rails' #GoogleMapAPIのkeyを隠すためのgem
 group :production do
   gem 'mysql2'
 end
+
+gem 'geocoder' #地名から緯度経度に変換できるgem
+gem "gmaps4rails" #GoogleMapを簡単に作成できるgem
+gem "gon" #JSでcontrollerの変数を使えるようにするgem

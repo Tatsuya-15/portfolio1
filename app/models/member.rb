@@ -6,4 +6,13 @@ class Member < ApplicationRecord
          
    has_many :customers, dependent: :destroy
    attachment :member_image
+   has_one :customer, dependent: :destroy
+   accepts_nested_attributes_for :customer
+   has_many :post_comments, dependent: :destroy
+   has_many :favorites, dependent: :destroy
+   
+  def favorited_by?(member)
+    favorites.where(member_id: member.id).exists?
+  end
+  
 end

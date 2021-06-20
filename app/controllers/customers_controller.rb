@@ -2,13 +2,17 @@ class CustomersController < ApplicationController
   
   def new
      @customer = Customer.new
+     @customer.build_member
   end
 
   def create
     @customer = Customer.new(customer_params)
     @customer.member_id = current_member.id
-    @customer.save
-    redirect_to customers_path
+    if @customer.save
+      redirect_to customers_path
+    else
+      redirect_to new_customers_path
+    end
   end
 
   def index
@@ -18,6 +22,11 @@ class CustomersController < ApplicationController
 
   def show
      @customer = Customer.find(params[:id])
+     @lat = @customer.latitude
+     @lng = @customer.longitude
+     gon.lat = @lat
+     gon.lng = @lng
+     @post_comment = PostComment.new
      
   end
   
@@ -40,7 +49,7 @@ class CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:company, :name, :address, :tel, :email, :last_visit_date, :memo)
+    params.require(:customer).permit(:company, :name, :address, :tel, :email, :last_visit_date, :memo, spot_attributes: [:address])
   end
   
 end

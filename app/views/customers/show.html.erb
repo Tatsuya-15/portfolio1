@@ -22,10 +22,33 @@
           <td><%= @customer.memo %></td>
         </tr>
       </table>
+
+    <div class="show">
+      <div class="show__maps" id="show_map" style="height: 320px; width: 400px;"></div>
+     </div>
+
+
       <% if @customer.member == current_member %>
         <%= link_to "編集", edit_customer_path(@customer) %>
         <%= link_to "削除", customer_path(@customer), method: :delete, "data-confirm" => "本当に削除しますか？" %>
       <% end %>
+
+      <div class="comments">
+      <p>コメント件数：<%= @customer.post_comments.count %></p>
+      <% @customer.post_comments.each do |post_comment| %>
+        <%= post_comment.comment %><%= post_comment.created_at.strftime('%Y/%m/%d') %>
+        <%= post_comment.member.last_name %><%= post_comment.member.first_name %>
+        <% if post_comment.member == current_member %>
+         <%= link_to "削除", customer_post_comment_path(post_comment.customer, post_comment), method: :delete %>
+        <% end %>
+      <% end %>
+      </div>
+      <div class="new-comment">
+      <%= form_with(model:[@customer, @post_comment], local: true) do |f| %>
+        <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+        <%= f.submit "送信する" %>
+      <% end %>
+      </div>
 
     </div>
   </div>
