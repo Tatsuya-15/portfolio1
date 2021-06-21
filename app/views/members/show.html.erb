@@ -20,16 +20,16 @@
 				    <td>
 				      <% if @member.id == current_member.id %>
 					    <p><%= link_to "編集", edit_member_path(@member) %></p>
-					    <% end %> 
+					    <% end %>
 				    </td>
 			    </tr>
 		    </tbody>
 	     </table>
-	     
-	     
+
+
 	     <!-- ログインしている人の担当企業一覧 -->
 	     <h2>担当企業一覧</h2>
-	     
+
 	     <table>
 	        <tr>
 	        	<th></th>
@@ -40,21 +40,17 @@
 		        <th>e-mail</th>
 		        <th>最終訪問日</th>
 	        </tr>
-	        
+
 	        <tr>
 	        	<td>
 	        		<% if @member.favorited_by?(current_member) %>
-					    <p>
-					      <%= link_to member_favorites_path(@member), method: :delete do %>
-					        ★
-					      <% end %>
-					    </p>
-					    <% else %>
-					    <p>
-					      <%= link_to member_favorites_path(@member), method: :post do %>
-					        ☆
-					      <% end %>
-					    </p>
+						<%= link_to member_favorites_path(@member), method: :delete do %>
+						 ★
+						<% end %>
+					<% else %>
+						<%= link_to member_favorites_path(@member), method: :post do %>
+						 ☆
+						<% end %>
 					 <% end %>
 	        	</td>
 		        <% @customers.each do |customer| %>
@@ -70,9 +66,9 @@
 		        <td><%= customer.last_visit_date %></td>
 		        <% end %>
 	        </tr>
-	        
+
 	      </table>
-      
+
     </div>
   </div>
 </div>
