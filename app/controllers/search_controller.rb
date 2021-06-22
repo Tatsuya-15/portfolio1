@@ -18,9 +18,9 @@ class SearchController < ApplicationController
 
   def partical(model, value)
     if model == 'member'                       
-      Member.where(last_name: value)                
+      Member.where("last_name LIKE ?", "%#{value}%")                
     elsif model == 'customer'
-      Customer.where(company: value)
+      Customer.where("company LIKE ?", "%#{value}%")
     end
   end
 

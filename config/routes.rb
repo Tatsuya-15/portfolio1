@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   
   get '/search' => 'search#search'
   
+  get '/map_request', to: 'maps#customers', as: 'map_request'
+  
 end

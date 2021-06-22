@@ -1,36 +1,51 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-1">
+  <div class="row justify-content-center">
+    <div class="col-xs-1 w-100">
       <h2>顧客情報新規登録</h2>
-      <%= form_with model: @customer, local:true do |f| %>
-       <h4>企業名</h4>
-       <%= f.text_field :company %>
-       <h4>担当者名</h4>
-       <%= f.text_field :name %>
-       <h4>住所</h4>
-       <%= f.text_field :address %>
-       <div class=“spot”>
-          <%= f.fields_for :spot do |s| %>
-            <%= s.label :address, "レビュー場所(Google Mapで検索)", class: 'spot__title' %>
-            <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text' %>
-          <% end %>
-          <input onclick="codeAddress()" type="button" value="検索する"></input>
-          <div class="map" id="map" style="height: 320px; width: 640px;"></div>
-        </div>
-
-       <h4>電話番号</h4>
-       <%= f.text_field :tel %>
-       <h4>メール</h4>
-       <%= f.text_field :email %>
-       <h4>最終訪問日</h4>
-       <%= f.text_field :last_visit_date %>
-       <h4>メモ</h4>
-       <%= f.text_area :memo %><br/>
-       <%= f.submit '登録' %>
+       <%= form_with model: @customer, local:true do |f| %>
+      <table class="table">
+        <tr>
+          <th class="text-center">企業名</th>
+          <td><%= f.text_field :company, :size=>"30" %></td>
+        </tr>
+        <tr>
+          <th class="text-center">担当者名</th>
+          <td><%= f.text_field :name, :size=>"30" %></td>
+        </tr>
+        <tr>
+          <th class="text-center">住所</th>
+          <td><%= f.text_field :address, :size=>"50" %></td>
+        </tr>
+        <tr>
+          <th class="text-center">所在地検索</th>
+          <td>
+            <%= f.fields_for :spot do |s| %>
+              <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text', :size=>"50" %>
+            <% end %>
+            <input onclick="codeAddress()" type="button" value="検索する"></input>
+            <div class="map" id="map" style="height: 320px; width: 640px;"></div>
+          </td>
+        </tr>
+        <tr>
+          <th class="text-center">電話番号</th>
+          <td><%= f.text_field :tel, :size=>"30" %></td>
+        </tr>
+        <tr>
+          <th class="text-center">メール</th>
+          <td><%= f.text_field :email, :size=>"30" %></td>
+        </tr>
+        <tr>
+          <th class="text-center">最終訪問日</th>
+          <td><%= f.text_field :last_visit_date, :size=>"30" %></td>
+        </tr>
+        <tr>
+          <th class="text-center">メモ</th>
+          <td><%= f.text_area :memo, :size=>"50x5" %></td>
+        </tr>
+      </table>
+      <%= f.submit '登録' %>
       <% end %>
-      
     </div>
-    
   </div>
 </div>
 

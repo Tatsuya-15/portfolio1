@@ -27,7 +27,6 @@ class CustomersController < ApplicationController
      gon.lat = @lat
      gon.lng = @lng
      @post_comment = PostComment.new
-     
   end
   
   def edit

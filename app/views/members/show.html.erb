@@ -1,19 +1,19 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-9">
-    	<!--メンバー情報の詳細-->
+  <div class="row justify-content-center">
+    <div class="col-xs-9 w-100">
+      <!--メンバー情報の詳細-->
       <h2>メンバー情報詳細</h2>
-       <table class="table table-bordered">
+       <table class="table table-bordered text-center">
 		    <tbody>
 		    	<tr>
-		    		<td>写真</td>
-				    <td>名前</td>
-				    <td>フリガナ</td>
-			    	<td>e-mail</td>
-			    	<td></td>
+		    		<td style="width: 15%">写真</td>
+				    <td style="width: 20%">名前</td>
+				    <td style="width: 25%">フリガナ</td>
+			    	<td style="width: 30%">e-mail</td>
+			    	<td style="width: 10%"></td>
 			    </tr>
 			    <tr>
-			    	<td><%= attachment_image_tag @member, :member_image, fallback: "no_image.png", size:'100x100'%></td>
+			    	<td><%= attachment_image_tag @member, :member_image, fallback: "no_image.png", size:'80x80'%></td>
 				    <td><%= @member.last_name %><%= @member.first_name %></td>
 			    	<td><%= @member.kana_last_name %><%= @member.kana_first_name %></td>
 				    <td><%= @member.email %></td>
@@ -25,35 +25,36 @@
 			    </tr>
 		    </tbody>
 	     </table>
-
-
-	     <!-- ログインしている人の担当企業一覧 -->
+    </div>
+ </div>
+ 
+  <!-- ログインしている人の担当企業一覧 -->
+ <div class="row justify-content-center">
+ 	<div class="col-xs-9 w-100">
 	     <h2>担当企業一覧</h2>
-
-	     <table>
+	     <table class="table text-center">
 	        <tr>
-	        	<th></th>
-		        <th>企業名</th>
-		        <th>担当者名</th>
-		        <th>住所</th>
-		        <th>電話番号</th>
-		        <th>e-mail</th>
-		        <th>最終訪問日</th>
+	        	<th style="width: 5%"></th>
+		        <th style="width: 15%">企業名</th>
+		        <th style="width: 15%">担当者名</th>
+		        <th style="width: 20%">住所</th>
+		        <th style="width: 15%">電話番号</th>
+		        <th style="width: 20%">e-mail</th>
+		        <th style="width: 10%">最終訪問日</th>
 	        </tr>
-
+	        <% @customers.each do |customer| %>
 	        <tr>
 	        	<td>
 	        		<% if @member.favorited_by?(current_member) %>
-						<%= link_to member_favorites_path(@member), method: :delete do %>
-						 ★
-						<% end %>
-					<% else %>
-						<%= link_to member_favorites_path(@member), method: :post do %>
-						 ☆
-						<% end %>
-					 <% end %>
+								<%= link_to member_favorites_path(@member), method: :delete do %>
+								 ★
+								<% end %>
+							<% else %>
+								<%= link_to member_favorites_path(@member), method: :post do %>
+								 ☆
+								<% end %>
+							 <% end %>
 	        	</td>
-		        <% @customers.each do |customer| %>
 		        <td>
 		          <%= link_to customer_path(customer.id) do %>
 		          <%= customer.company %>
@@ -66,9 +67,7 @@
 		        <td><%= customer.last_visit_date %></td>
 		        <% end %>
 	        </tr>
-
 	      </table>
-
     </div>
   </div>
 </div>
