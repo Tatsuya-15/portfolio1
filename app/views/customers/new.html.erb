@@ -17,16 +17,6 @@
           <td><%= f.text_field :address, :size=>"50" %></td>
         </tr>
         <tr>
-          <th class="text-center">所在地検索</th>
-          <td>
-            <%= f.fields_for :spot do |s| %>
-              <%= s.text_field :address, placeholder: "スポットを入力", id: "address", class: 'spot__text', :size=>"50" %>
-            <% end %>
-            <input onclick="codeAddress()" type="button" value="検索する"></input>
-            <div class="map" id="map" style="height: 320px; width: 640px;"></div>
-          </td>
-        </tr>
-        <tr>
           <th class="text-center">電話番号</th>
           <td><%= f.text_field :tel, :size=>"30" %></td>
         </tr>

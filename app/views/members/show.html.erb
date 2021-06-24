@@ -27,7 +27,7 @@
 	     </table>
     </div>
  </div>
- 
+
   <!-- ログインしている人の担当企業一覧 -->
  <div class="row justify-content-center">
  	<div class="col-xs-9 w-100">
@@ -45,12 +45,12 @@
 	        <% @customers.each do |customer| %>
 	        <tr>
 	        	<td>
-	        		<% if @member.favorited_by?(current_member) %>
-								<%= link_to member_favorites_path(@member), method: :delete do %>
+	        		<% if @member.favorited_by?(customer.id) %>
+								<%= link_to member_favorites_path(@member, :customer_id => customer.id), method: :delete do %>
 								 ★
 								<% end %>
 							<% else %>
-								<%= link_to member_favorites_path(@member), method: :post do %>
+								<%= link_to member_favorites_path(@member, :customer_id =>customer.id), method: :post do %>
 								 ☆
 								<% end %>
 							 <% end %>

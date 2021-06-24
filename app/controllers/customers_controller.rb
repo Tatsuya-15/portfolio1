@@ -9,7 +9,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new(customer_params)
     @customer.member_id = current_member.id
     if @customer.save
-      redirect_to customers_path
+      redirect_to member_path(current_member)
     else
       redirect_to new_customers_path
     end

@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   resources :members, only: [:index, :show, :edit, :update] do
     resource :favorites, only: [:create, :destroy]
   end
-  
+
   get '/search' => 'search#search'
-  
+
   get '/map_request', to: 'maps#customers', as: 'map_request'
-  
+
 end

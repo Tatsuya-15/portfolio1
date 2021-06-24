@@ -28,10 +28,10 @@
       </table>
 
        <!--取引先の所在地-->
-       <!--<div class="show">
-        <div class="show__maps" id="show_map" style="height: 320px; width: 400px;"></div>
+       <div class="show">
+        <div class="show__maps" id="map" style="height: 320px; width: 400px;"></div>
        </div>
-       -->
+
 
      </div>
   </div>
@@ -60,3 +60,22 @@
     </div>
   </div>
 </div>
+
+<script>
+let map
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: <%= @customer.latitude%>, lng: <%= @customer.longitude %>},
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: <%= @customer.latitude%>, lng: <%= @customer.longitude %>},
+    map: map
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLE_MAP_KEY"] %>&callback=initMap" async defer></script>
