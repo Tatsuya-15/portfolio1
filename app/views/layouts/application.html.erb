@@ -12,8 +12,9 @@
 
   <body class="d-flex flex-column vh-100">
     <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
+          <a class="navbar-brand" href="/"><%= image_tag 'customers_info-logo2.png', :size =>'180x70' %></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -21,33 +22,33 @@
             <ul class="navbar-nav ml-auto">
               <!-- ログインしている時 -->
               <% if member_signed_in? %>
-                <li class="nav-item">
-                  <%= link_to "取引先一覧", customers_path, class: 'nav-link text-dark' %>
+                <li>
+                  <%= link_to "my page", member_path(current_member.id), class: 'fas fa-id-card nav-link text-dark'  %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "取引先登録", new_customer_path, class: 'nav-link text-dark'  %>
+                <li>
+                  <%= link_to "add customer", new_customer_path, class: 'fas fa-plus-square nav-link text-dark'  %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "営業一覧", members_path, class: 'nav-link text-dark'  %>
+                <li>
+                  <%= link_to "customers", customers_path, class: 'fas fa-building nav-link text-dark' %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "マイページ", member_path(current_member.id), class: 'nav-link text-dark'  %>
+                <li>
+                  <%= link_to "members", members_path, class: 'fas fa-user nav-link text-dark'  %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'nav-link text-dark'  %>
+                <li>
+                  <%= link_to "log out", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-dark'  %>
                 </li>
 
               <!-- ログインしていない時 -->
               <% else %>
 
-              　<li class="nav-item">
-                  <%= link_to "about", homes_about_path, class: 'nav-link text-dark' %>
+              　<li>
+                  <%= link_to "about", homes_about_path, class: 'fas fa-link nav-link text-dark' %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "新規登録", new_member_registration_path, class: 'nav-link text-dark'  %>
+                <li>
+                  <%= link_to "sign up", new_member_registration_path, class: 'fas fa-user-plus nav-link text-dark'  %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to "ログイン", new_member_session_path, class: 'nav-link text-dark'  %>
+                <li>
+                  <%= link_to "log in", new_member_session_path, class: 'fas fa-sign-in-alt nav-link text-dark'  %>
                 </li>
               <% end %>
             </ul>
@@ -57,9 +58,9 @@
     </header>
 
     <main class="mb-auto">
-      
+
       <%= yield %>
-  
+
       <!--
       <script src="https://maps.googleapis.com/maps/api/js?key=#{ENV["GOOGLE_MAP_KEY"]}&callback=initMap"></script>
       <script src="//cdn.rawgit.com/mahnunchik/markerclustererplus/master/dist/markerclusterer.min.js"></script>
