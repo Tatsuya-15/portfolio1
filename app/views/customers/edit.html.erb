@@ -1,23 +1,41 @@
 <div class="container">
-  <div class="row">
+  <div class="row justify-content-center mt-5">
     <div class="col-xs-9">
-      <h2>取引先情報編集</h2>
+      <h3>取引先情報編集</h3>
       <%= form_with model:@customer, local: true do |f| %>
-       <h4>企業名</h4>
-       <%= f.text_field :company %>
-       <h4>担当者名</h4>
-       <%= f.text_field :name %>
-       <h4>住所</h4>
-       <%= f.text_field :address %>
-       <h4>電話番号</h4>
-       <%= f.text_field :tel %>
-       <h4>メール</h4>
-       <%= f.text_field :email %>
-       <h4>最終訪問日</h4>
-       <%= f.text_field :last_visit_date %>
-       <h4>メモ</h4>
-       <%= f.text_area :memo %><br/>
-       <%= f.submit '編集' %>
+       <table class="table">
+         <tr>
+           <td>企業名</td>
+           <td><%= f.text_field :company %></td>
+         </tr>
+         <tr>
+           <td>担当者名</td>
+           <td><%= f.text_field :name %></td>
+         </tr>
+         <tr>
+           <td>住所</td>
+           <td><%= f.text_field :address %></td>
+         </tr>
+         <tr>
+           <td>電話番号</td>
+           <td><%= f.text_field :tel %></td>
+         </tr>
+         <tr>
+           <td>メール</td>
+           <td><%= f.text_field :email %></td>
+         </tr>
+         <tr>
+           <td>最終訪問日</td>
+           <td><%= f.text_field :last_visit_date %></td>
+         </tr>
+         <tr>
+           <td>メモ</td>
+           <td><%= f.text_area :memo %></td>
+         </tr>
+       </table>
+       <div class="row justify-content-center">
+         <%= f.submit '編 集', class:"btn btn-outline-primary" %>
+       </div>
       <% end %>
       
     </div>
