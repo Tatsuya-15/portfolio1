@@ -23,34 +23,34 @@
               <!-- ログインしている時 -->
               <% if member_signed_in? %>
                 <li>
-                  <%= link_to "my page", member_path(current_member.id), class: 'fas fa-id-card nav-link text-light'  %>
+                  <%= link_to "マイページ", member_path(current_member.id), class: 'fas fa-id-card nav-link text-light'  %>
                 </li>
                 <li>
-                  <%= link_to "add customer", new_customer_path, class: 'fas fa-plus-square nav-link text-light'  %>
+                  <%= link_to "取引先追加", new_customer_path, class: 'fas fa-plus-square nav-link text-light'  %>
                 </li>
                 <li>
-                  <%= link_to "customers", customers_path, class: 'fas fa-building nav-link text-light' %>
+                  <%= link_to "取引先一覧", customers_path, class: 'fas fa-building nav-link text-light' %>
                 </li>
                 <li>
-                  <%= link_to "members", members_path, class: 'fas fa-user nav-link text-light'  %>
+                  <%= link_to "メンバー一覧", members_path, class: 'fas fa-user nav-link text-light'  %>
                 </li>
                 <li>
-                  <%= link_to "log out", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light'  %>
+                  <%= link_to "ログアウト", destroy_member_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light'  %>
                 </li>
 
               <!-- ログインしていない時 -->
               <% else %>
                 <li>
-                  <%= link_to "top", root_path, class: 'fas fa-home nav-link text-light' %>
+                  <%= link_to "トップ", root_path, class: 'fas fa-home nav-link text-light' %>
                 </li>
               　<li>
-                  <%= link_to "about", homes_about_path, class: 'fas fa-link nav-link text-light' %>
+                  <%= link_to "アバウト", homes_about_path, class: 'fas fa-link nav-link text-light' %>
                 </li>
                 <li>
-                  <%= link_to "sign up", new_member_registration_path, class: 'fas fa-user-plus nav-link text-light'  %>
+                  <%= link_to "メンバー登録", new_member_registration_path, class: 'fas fa-user-plus nav-link text-light'  %>
                 </li>
                 <li>
-                  <%= link_to "log in", new_member_session_path, class: 'fas fa-sign-in-alt nav-link text-light'  %>
+                  <%= link_to "ログイン", new_member_session_path, class: 'fas fa-sign-in-alt nav-link text-light'  %>
                 </li>
               <% end %>
             </ul>

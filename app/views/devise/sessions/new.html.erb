@@ -1,15 +1,15 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-xs-9 w-80">
-      <h2>Log in</h2>
+      <h2>ログイン</h2>
       <%= form_with model: @member, url: member_session_path, local: true do |f| %>
       <table class="table text-center table-borderless">
         <tr>
-          <td>e-mail</td>
+          <td>メールアドレス</td>
           <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
         </tr>
         <tr>
-          <td>password</td>
+          <td>パスワード</td>
           <td><%= f.password_field :password, autocomplete: "current-password" %></td>
         </tr>
       </table>
@@ -21,7 +21,7 @@
         </div>
         <% end %>
         <div class="actions text-center">
-            <%= f.submit "Log in", class: "btn btn-info" %>
+            <%= f.submit "ログイン", class: "btn btn-info" %>
         </div>
       </div>
     </div>
