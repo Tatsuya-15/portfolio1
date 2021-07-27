@@ -11,6 +11,11 @@ class Member < ApplicationRecord
    has_many :post_comments, dependent: :destroy
    has_many :favorites, dependent: :destroy
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :kana_last_name, presence: true
+  validates :kana_first_name, presence: true
+
   def favorited_by?(customer_id)
     favorites.where(customer_id: customer_id).exists?
   end

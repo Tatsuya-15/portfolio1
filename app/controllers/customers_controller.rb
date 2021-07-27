@@ -1,5 +1,5 @@
 class CustomersController < ApplicationController
-  
+
   def new
      @customer = Customer.new
      @customer.build_member
@@ -11,13 +11,13 @@ class CustomersController < ApplicationController
     if @customer.save
       redirect_to member_path(current_member)
     else
-      redirect_to new_customers_path
+      render :new
     end
   end
 
   def index
     @customers = Customer.all
-    
+
   end
 
   def show
@@ -28,11 +28,11 @@ class CustomersController < ApplicationController
      gon.lng = @lng
      @post_comment = PostComment.new
   end
-  
+
   def edit
     @customer = Customer.find(params[:id])
   end
-  
+
   def update
     customer = Customer.find(params[:id])
     customer.update(customer_params)
@@ -44,11 +44,11 @@ class CustomersController < ApplicationController
     @customer.destroy
     redirect_to customers_path
   end
-  
+
   private
 
   def customer_params
     params.require(:customer).permit(:company, :name, :address, :tel, :email, :last_visit_date, :memo, spot_attributes: [:address])
   end
-  
+
 end
