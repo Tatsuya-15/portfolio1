@@ -2,7 +2,8 @@
   <div class="row justify-content-center">
     <div class="col-xs-9 w-80">
 
-      <h2>メンバー登録</h2>
+      <h2>メンバー登録</h2><br />
+      <h5>※すべて必須※</h5>
 
       <%= form_with model: @member, url: member_registration_path, id: 'new_member', class: 'new_member', local: true do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
